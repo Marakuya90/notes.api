@@ -23,15 +23,14 @@ use Illuminate\Support\Facades\Route;
 
 Route::post('/signup', [Authcontroller::class,'register']);
 
-Route::post('/login', function(Request $request)
-{
-    return $request;
-});
+Route::post('/login', [Authcontroller::class,'login']);
+
+//Маршруты для работы с заметками
 
 Route::get('/notes', function (Request $request)
 {
     return $request;
-});
+})->middleware('auth:sanctum');
 
 Route::get('notes/{note}', function(Request $request)
 {
@@ -47,15 +46,15 @@ Route::post('/notes', function (Request $request)
     $note->user_id = 1;
     $note->save();
     return $request;
-});
+})->middleware('auth:sanctum');
 
 Route::delete('notes/{note}', function (Request $request)
 {
     return $request;
-});
+})->middleware('auth:sanctum');
 
 Route::put('notes/{note}', function(Request $request)
 {
     return $request;
-});
+})->middleware('auth:sanctum');
 
