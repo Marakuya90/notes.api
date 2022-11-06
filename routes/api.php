@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Api\Authcontroller;
+use App\Http\Controllers\Api\Notecontroller;
 use App\Models\Note;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -27,7 +28,7 @@ Route::post('/login', [Authcontroller::class,'login']);
 
 //Маршруты для работы с заметками
 
-Route::get('/notes', function (Request $request)
+/*Route::get('/notes', function (Request $request)
 {
     return $request;
 })->middleware('auth:sanctum');
@@ -56,5 +57,6 @@ Route::delete('notes/{note}', function (Request $request)
 Route::put('notes/{note}', function(Request $request)
 {
     return $request;
-})->middleware('auth:sanctum');
+})->middleware('auth:sanctum');*/
 
+Route::apiResource('notes', Notecontroller::class)->middleware('auth:sanctum');
